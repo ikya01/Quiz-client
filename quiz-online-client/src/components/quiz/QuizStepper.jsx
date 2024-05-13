@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getSubjects } from "../../../utils/QuizService";
+import { FaPlus } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const QuizStepper = () => {
     const [currentStep, setCurrentStep] = useState(1);
@@ -28,17 +30,18 @@ const QuizStepper = () => {
         }
     };
  //qui est appelée lorsque l'utilisateur souhaite passer à l'étape suivante du processus de quiz.
-    const handleNext = () => {
-        if (currentStep === 3) {
-            if (selectedSubject && selectedNumQuestions) {
-                navigate("/take-quiz", { state: { selectedNumQuestions, selectedSubject } });
-            } else {
-                alert("Please select a subject and number of questions.");
-            }
+ const handleNext = () => {
+    if (currentStep === 3) {
+        if (selectedSubject && selectedNumQuestions) {
+            navigate("/take-quiz", { state: { selectedNumQuestions, selectedSubject } });
         } else {
-            setCurrentStep((prevStep) => prevStep + 1);
+            alert("Please select a subject and number of questions.");
         }
-    };
+    } else {
+        setCurrentStep((prevStep) => prevStep + 1);
+    }
+};
+
 
     const handlePrevious = () => {
         setCurrentStep((prevStep) => prevStep - 1);
@@ -149,6 +152,11 @@ const QuizStepper = () => {
                     </div>
                 </div>
             </div>
+            <div className="d-flex justify-content-end">
+    <Link to={"/dash"} className="btn btn-secondary">
+      <FaPlus /> Go back
+    </Link>
+  </div>
         </section>
     );
 };

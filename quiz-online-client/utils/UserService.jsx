@@ -19,3 +19,20 @@ export const loginUser = async(user) => {
     throw new Error(error.response.data.message);
   }
 };
+
+export const getAllUsers = async () => {
+  try {
+    const response = await api.get("/users");
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response.data.message);
+  }
+};
+
+export const deleteUser = async (username) => {
+  try {
+    await api.delete(`/users/${username}`);
+  } catch (error) {
+    throw new Error(error.response.data.message);
+  }
+};

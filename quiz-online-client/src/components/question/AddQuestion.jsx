@@ -250,8 +250,8 @@ const AddQuestion = () => {
 									<button type="submit" className="btn btn-outline-success mr-2">
 										Save Question
 									</button>
-									<Link to={"/all-quizzes"} className="btn btn-outline-primary ml-2">
-										Back to existing questions
+									<Link to={"/admin"} className="btn btn-outline-primary ml-2">
+										Go Back
 									</Link>
 								</div>
 							</form>

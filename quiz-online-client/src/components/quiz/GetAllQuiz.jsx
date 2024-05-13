@@ -90,11 +90,17 @@ const GetAllQuiz = () => {
                     ))}
                 </tbody>
             </table>
-            <div className="d-flex justify-content-end">
-                <Link to={"/create-quiz"}>
+            <div className="d-flex justify-content-end" style={{ marginBottom: '20px' }}>
+                <Link to={"/create-quiz"} className="btn btn-secondary">
                     <FaPlus /> Add Question
                 </Link>
             </div>
+
+            <div className="d-flex justify-content-end">
+    <Link to={"/admin"} className="btn btn-secondary">
+    <FaPlus />Go back
+    </Link>
+  </div>
         </section>
     );
 };
