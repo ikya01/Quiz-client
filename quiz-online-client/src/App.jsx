@@ -12,6 +12,14 @@ import Navbar from "./components/layout/NavBar"
 import Admin from "./components/Admin"
 import Register from "./components/Register"
 import Login from "./components/login"
+import CourseForm  from "./components/Course/CourseForm"
+import CourseWithVideo from "./components/Course/CourseWithVideo"
+import Dashboard from "./components/Dashboard"
+
+
+
+
+
 
 
 function App() {
@@ -26,6 +34,7 @@ function App() {
 
   return (
     <Router>
+      
       <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
@@ -33,10 +42,15 @@ function App() {
         <Route path="/quiz-stepper" element={<QuizStepper />} />
         <Route path="/take-quiz" element={<Quiz />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/dash" element={<Dashboard />} />
+       
         <Route path="/create-quiz" element={<AddQuestion />} />
         <Route path="/update-quiz/:id" element={<UpdateQuestion />} />
         <Route path="/all-quizzes" element={<GetAllQuiz />} />
         <Route path="/quiz-result" element={<QuizResult />} />
+        <Route path="/course-form" element={<CourseForm />} />
+        <Route path="/course-video" element={<CourseWithVideo />} />
+      
        
       </Routes>
     </Router>

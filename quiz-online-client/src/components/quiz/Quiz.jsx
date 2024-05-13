@@ -18,6 +18,8 @@ const Quiz = () => {
 		fetchQuizData()
 	}, [])
 
+
+	//récupérer des questions de quiz en fonction du nombre de questions sélectionné et du sujet sélectionné.
 	const fetchQuizData = async () => {
 		if (selectedNumQuestions && selectedSubject) {
 			const questions = await fetchQuizForUser(selectedNumQuestions, selectedSubject)
@@ -27,6 +29,7 @@ const Quiz = () => {
 
 	const handleAnswerChange = (questionId, answer) => {
 		setSelectedAnswers((prevAnswers) => {
+			//cherche l'index de la réponse sélectionnée précédemment pour la question donnée dans l'ensemble des réponses sélectionnées précédemment. Elle utilise Array.findIndex pour trouver l'index de la réponse qui a le même questionId que celui fourni.
 			const existingAnswerIndex = prevAnswers.findIndex((answerObj) => answerObj.id === questionId)
 			const selectedAnswer = Array.isArray(answer)
 				? answer.map((a) => a.charAt(0))
@@ -44,7 +47,7 @@ const Quiz = () => {
 			}
 		})
 	}
-//vérifie si une réponse à une question donnée a été sélectionnée par l'utilisateur
+
 	const isChecked = (questionId, choice) => {
 		const selectedAnswer = selectedAnswers.find((answer) => answer.id === questionId)
 		if (!selectedAnswer) {
@@ -56,7 +59,6 @@ const Quiz = () => {
 		return selectedAnswer.answer === choice.charAt(0)
 	}
 
-//gère les changements lorsqu'un utilisateur coche ou décoche une case pour sélectionner une réponse à une question à choix multiples
 	const handleCheckboxChange = (questionId, choice) => {
 		setSelectedAnswers((prevAnswers) => {
 			const existingAnswerIndex = prevAnswers.findIndex((answerObj) => answerObj.id === questionId)
@@ -106,7 +108,7 @@ const handleSubmit = () => {
   setTotalScores(scores);
   setSelectedAnswers([]);
   setCurrentQuestionIndex(0);
-  navigate("/quiz-result", { state: { quizQuestions, totalScores: scores } });
+  navigate("/quiz-result", { state: { quizQuestions, totalScores: scores , selectedSubject } });
 };
 
 

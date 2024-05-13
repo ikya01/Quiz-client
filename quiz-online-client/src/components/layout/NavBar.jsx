@@ -8,10 +8,10 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const username = localStorage.getItem("username");
-        if (username) {
+        const storedUsername = localStorage.getItem("username");
+        if (storedUsername) {
             setIsLoggedIn(true);
-            setUsername(username);
+            setUsername(storedUsername);
         } else {
             setIsLoggedIn(false);
             setUsername("");
@@ -31,48 +31,17 @@ const Navbar = () => {
                 <NavLink className="navbar-brand" to={"/"}>
                     QuizStar
                 </NavLink>
-                <button
-                    className="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav"
-                    aria-controls="navbarNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav mr-auto">
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to={"/quiz-stepper"}>
-                                Take Quiz
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to={"/all-quizzes"}>
-                                List Questions
-                            </NavLink>
-                        </li>
-                    </ul>
-                    <ul className="navbar-nav ms-auto"> {/* Utilisation de la classe ms-auto pour aligner à droite */}
-                        {isLoggedIn ? (
-                            <>
-                                <li className="nav-item">
-                                    <span className="nav-link">{username}</span>
-                                </li>
-                                <li className="nav-item">
-                                    <button className="btn btn-link nav-link" onClick={handleLogout}>Logout</button>
-                                </li>
-                            </>
-                        ) : (
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to={"/"}>
-                                    Login
-                                </NavLink>
-                            </li>
-                        )}
-                    </ul>
-                </div>
+                {isLoggedIn ? (
+                    <div className="navbar-nav ml-auto">
+                        <span className="navbar-text" style={{ fontSize: "18px" }}>{username}</span>
+                        <div style={{ marginRight: "10px" }}></div> {/* Ajoute de l'espace */}
+                        <NavLink className="navbar-brand" to={"/"} onClick={handleLogout}>Logout</NavLink>
+                    </div>
+                ) : (
+                    <NavLink className="navbar-brand" to={"/"}>
+                        Login
+                    </NavLink>
+                )}
             </div>
         </nav>
     );

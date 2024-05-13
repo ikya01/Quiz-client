@@ -16,11 +16,17 @@ const Login = () => {
     e.preventDefault();
     try {
       await loginUser({ username, password });
+      if(username==="admin1"){
         // Stocker le nom d'utilisateur dans localStorage après la connexion réussie
         localStorage.setItem("username", username);
 
-        // Redirection vers la page addQuestion si la connexion réussit
-        navigate("/create-quiz");
+        // Redirection vers la page addQuestion si la connwexion réussit
+        navigate("/admin");}
+        else{
+          localStorage.setItem("username", username);
+          navigate("/dash");
+
+        }
     } catch (error) {
       setError("Invalid username or password.");
     }
