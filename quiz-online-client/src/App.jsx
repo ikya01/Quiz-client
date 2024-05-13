@@ -15,6 +15,7 @@ import Login from "./components/login"
 import CourseForm  from "./components/Course/CourseForm"
 import CourseWithVideo from "./components/Course/CourseWithVideo"
 import Dashboard from "./components/Dashboard"
+import DashboardCourse from "./components/DashboardCourse"
 
 
 
@@ -43,13 +44,13 @@ function App() {
         <Route path="/take-quiz" element={<Quiz />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/dash" element={<Dashboard />} />
-       
         <Route path="/create-quiz" element={<AddQuestion />} />
         <Route path="/update-quiz/:id" element={<UpdateQuestion />} />
         <Route path="/all-quizzes" element={<GetAllQuiz />} />
         <Route path="/quiz-result" element={<QuizResult />} />
         <Route path="/course-form" element={<CourseForm />} />
         <Route path="/course-video" element={<CourseWithVideo />} />
+        <Route path="/dash-course" element={<DashboardCourse />} />
       
        
       </Routes>

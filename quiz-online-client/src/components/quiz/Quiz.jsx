@@ -29,7 +29,7 @@ const Quiz = () => {
 
 	const handleAnswerChange = (questionId, answer) => {
 		setSelectedAnswers((prevAnswers) => {
-			//cherche l'index de la réponse sélectionnée précédemment pour la question donnée dans l'ensemble des réponses sélectionnées précédemment. Elle utilise Array.findIndex pour trouver l'index de la réponse qui a le même questionId que celui fourni.
+	//cherche l'index de la réponse sélectionnée précédemment pour la question donnée dans l'ensemble des réponses sélectionnées précédemment. Elle utilise Array.findIndex pour trouver l'index de la réponse qui a le même questionId que celui fourni.
 			const existingAnswerIndex = prevAnswers.findIndex((answerObj) => answerObj.id === questionId)
 			const selectedAnswer = Array.isArray(answer)
 				? answer.map((a) => a.charAt(0))
